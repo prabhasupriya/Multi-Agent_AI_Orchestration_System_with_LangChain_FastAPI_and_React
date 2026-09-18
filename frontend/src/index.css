@@ -1,0 +1,271 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+:root {
+  --ink: #0f1420;
+  --panel: #161d2e;
+  --panel-raised: #1c2438;
+  --line: #2a3350;
+  --text: #e7e9f2;
+  --text-dim: #9aa3c0;
+  --amber: #e0a458;
+  --planner: #a78bfa;
+  --researcher: #60a5fa;
+  --synthesizer: #4ade80;
+  --system: #8891ab;
+  --error: #f87171;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--text);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.app {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.app__header h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 2rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+}
+
+.app__header p {
+  color: var(--text-dim);
+  margin: 0 0 32px;
+  max-width: 56ch;
+}
+
+.app__task-id {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin: 12px 0 24px;
+}
+
+.app__task-id code {
+  color: var(--amber);
+}
+
+/* --- Task form ---------------------------------------------------- */
+
+.task-form {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.task-form__textarea {
+  width: 100%;
+  resize: vertical;
+  background: var(--panel-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.task-form__textarea:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 1px;
+}
+
+.task-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.task-form__submit {
+  background: var(--amber);
+  color: #1a1305;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.task-form__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.task-form__submit:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+.task-form__error {
+  color: var(--error);
+  font-size: 0.85rem;
+}
+
+.task-form__examples {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.task-form__example-chip {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+  max-width: 320px;
+  text-align: left;
+}
+
+.task-form__example-chip:hover:not(:disabled) {
+  border-color: var(--amber);
+  color: var(--text);
+}
+
+.task-form__example-chip:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* --- Timeline ------------------------------------------------------ */
+
+.timeline {
+  margin-top: 28px;
+}
+
+.timeline--empty {
+  color: var(--text-dim);
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 32px;
+  text-align: center;
+}
+
+.timeline__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  margin-bottom: 12px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.status-dot--live {
+  background: var(--synthesizer);
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.15);
+}
+
+.timeline__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.event-item {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--system);
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+
+.event-item__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.event-item__icon {
+  font-size: 0.9rem;
+}
+
+.event-item__agent {
+  font-weight: 600;
+}
+
+.event-item__type {
+  color: var(--text-dim);
+}
+
+.event-item__time {
+  margin-left: auto;
+}
+
+.event-item__body {
+  font-size: 0.88rem;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* --- Final result --------------------------------------------------- */
+
+.final-result {
+  margin-top: 24px;
+  background: var(--panel-raised);
+  border: 1px solid var(--synthesizer);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.final-result h3 {
+  margin: 0 0 10px;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.final-result p {
+  margin: 0;
+  white-space: pre-wrap;
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
