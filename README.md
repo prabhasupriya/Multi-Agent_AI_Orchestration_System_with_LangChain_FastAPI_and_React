@@ -217,7 +217,7 @@ acknowledge the limitation in its final answer rather than inventing data.
 ## Notes on the LLM provider
 
 The `.env.example` defaults to **Groq** (`LLM_PROVIDER=groq`,
-`llama-3.3-70b-versatile`) since it's fast and has a generous free tier —
+`openai/gpt-oss-20b`) since it's fast and has a generous free tier —
 grab a key at [console.groq.com/keys](https://console.groq.com/keys) and
 drop it into `LLM_API_KEY`.
 
@@ -239,3 +239,6 @@ No code changes are needed for any of these — every agent (Planner,
 Researcher, Synthesizer) calls the single `get_llm()` factory in
 `app/agents/llm.py`, which reads `LLM_PROVIDER` and returns the right
 client.
+
+## youtude video 
+[click link](https://youtu.be/Ej63dwTWK14?si=6hKyoBUyOH7yvBoq)
